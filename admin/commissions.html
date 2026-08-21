@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Admin — Commission Dashboard |  Abundance FootWears</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body class="admin-body">
+
+  <!-- PASSWORD GATE -->
+  <div class="admin-gate" id="adminGate">
+    <div class="gate-card">
+      <div class="gate-icon"><i class="fas fa-lock"></i></div>
+      <h2>Admin Access</h2>
+      <p>Enter your admin password to continue</p>
+      <input type="password" id="adminPassword" placeholder="Password" />
+      <button onclick="verifyAdmin()" class="gate-btn">Unlock Dashboard</button>
+      <p id="gateError" class="gate-error"></p>
+      <a href="../index.html" class="gate-back">← Back to Store</a>
+    </div>
+  </div>
+
+  <!-- MAIN DASHBOARD -->
+  <div class="admin-dashboard" id="adminDashboard" style="display:none;">
+    
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-brand">
+        <div class="logo"> <span>Abundance</span> FootWears</div>
+        <p class="sidebar-subtitle">Commission Dashboard</p>
+      </div>
+      <nav class="sidebar-nav">
+  <a href="#" class="nav-item active" data-section="overview" onclick="switchSection('overview', this); return false;">
+    <i class="fas fa-chart-line"></i> Overview
+  </a>
+  <a href="#" class="nav-item" data-section="sales" onclick="switchSection('sales', this); return false;">
+    <i class="fas fa-receipt"></i> Sales Log
+  </a>
+  <a href="#" class="nav-item" data-section="partners" onclick="switchSection('partners', this); return false;">
+    <i class="fas fa-users"></i> Partners
+  </a>
+  <a href="../index.html" class="nav-item">
+    <i class="fas fa-store"></i> View Store
+  </a>
+  <a href="#" onclick="logoutAdmin(); return false;" class="nav-item logout">
+    <i class="fas fa-sign-out-alt"></i> Logout
+  </a>
+</nav>
+    </aside>
+
+    <main class="admin-main">
+  
+  <!-- Top Bar -->
+  <div class="admin-topbar">
+    <h1 class="page-title" id="pageTitle">Commission Overview</h1>
+    <div class="topbar-actions">
+      <button onclick="refreshData()" class="btn-refresh"><i class="fas fa-sync-alt"></i> Refresh</button>
+      <span class="admin-user"><i class="fas fa-user-circle"></i> Admin</span>
+    </div>
+  </div>
+
+  <!-- ===== OVERVIEW SECTION (visible by default) ===== -->
+  <div id="section-overview">
+    <div class="summary-cards">
+      <div class="summary-card">
+        <div class="card-icon blue"><i class="fas fa-coins"></i></div>
+        <div class="card-info">
+          <p class="card-label">Total Sales</p>
+          <h3 id="totalSales">₦0</h3>
+          <p class="card-meta"><span id="totalTransactions">0</span> transactions</p>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="card-icon gold"><i class="fas fa-wallet"></i></div>
+        <div class="card-info">
+          <p class="card-label">Your Earnings</p>
+          <h3 id="AbundanceEarnings">₦0</h3>
+          <p class="card-meta">Abundance share</p>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="card-icon brown"><i class="fas fa-hand-holding-usd"></i></div>
+        <div class="card-info">
+          <p class="card-label">Paid to Partners</p>
+          <h3 id="partnerPayout">₦0</h3>
+          <p class="card-meta"><span id="paidCount">0</span> paid</p>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="card-icon red"><i class="fas fa-clock"></i></div>
+        <div class="card-info">
+          <p class="card-label">Pending Payout</p>
+          <h3 id="pendingPayout">₦0</h3>
+          <p class="card-meta"><span id="pendingCount">0</span> unpaid</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PARTNERS SECTION (hidden by default) ===== -->
+  <section class="admin-section hidden" id="section-partners">
+    <div class="section-header">
+      <h2><i class="fas fa-users"></i> Partners</h2>
+      <p class="section-desc">Who you work with and what they've earned</p>
+    </div>
+    <div class="partners-grid" id="partnersGrid">
+      <p class="loading-text">Loading partners...</p>
+    </div>
+  </section>
+
+  <!-- ===== SALES LOG SECTION (hidden by default) ===== -->
+  <section class="admin-section hidden" id="section-sales">
+    <div class="section-header">
+      <h2><i class="fas fa-receipt"></i> Sales Log</h2>
+      <div class="section-actions">
+        <select id="filterPartner" onchange="filterSales()">
+          <option value="all">All Partners</option>
+        </select>
+        <select id="filterStatus" onchange="filterSales()">
+          <option value="all">All Status</option>
+          <option value="Pending">Pending</option>
+          <option value="Paid">Paid</option>
+        </select>
+      </div>
+    </div>
+    <div class="table-wrapper">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Order</th>
+            <th>Product</th>
+            <th>Customer</th>
+            <th>Price</th>
+            <th>Partner</th>
+            <th>Partner Share</th>
+            <th>Your Share</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="salesTableBody">
+          <tr><td colspan="10" class="loading-text">Loading sales...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

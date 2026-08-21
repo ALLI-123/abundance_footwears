@@ -1,0 +1,73 @@
+
+
+Hugging Face LLM Account Details
+
+registered email account: alli.abdulazeez92@gmail.com
+Pwd:   izzuDeeEN@1992IzABO1_
+
+
+BUD. T FOOTWEARS
+
+PREORDER GOOGLE APPSCRIPT DETAILS
+
+BUDE  .T API (combines waitlist + tracker + commissions tracker)
+
+Deployment ID:
+
+---AKfycbwI9xvgWhhXq_GutJTVchx158C5nDXBj8kwemPV4Du2uKNmraf7kNEU0BMS-d5i5UxV---
+
+web app url:
+
+---https://script.google.com/macros/s/AKfycbwI9xvgWhhXq_GutJTVchx158C5nDXBj8kwemPV4Du2uKNmraf7kNEU0BMS-d5i5UxV/exec---
+
+
+
+
+
+OBSERVATIONS TO BE LOOKED AT LATER 
+
+I notice that the 
+
+        <a href="#" class="nav-item active"><i class="fas fa-chart-line"></i> Overview</a>
+        <a href="#" class="nav-item"><i class="fas fa-receipt"></i> Sales Log</a>
+        <a href="#" class="nav-item"><i class="fas fa-users"></i> Partners</a> 
+
+in the sidebar of the commissions.html UI have href="#" (dummy links)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+🔒 Security Note (Important!)
+This password gate is simple protection, not real security. Anyone who views the page source can see the password. For a small business with trusted partners, this is fine.
+For stronger security later:
+Move the password check to Apps Script (server-side)    I want to work on this
+Use Paystack/Flutterwave's admin tools
+Add proper authentication
+For now, this works well and keeps things simple. 
+
+
+Will work on these too:
+
+
+🤔 Next Steps?
+Once this is working, we can add:
+Add Sale form — Add new sales directly from the dashboard (no need to open Google Sheet)
+Mark as Paid button — Update status from the dashboard
+Monthly report — Auto-generate PDF summary for each partner
+Profit charts — Visual graphs of earnings over time
+
+
+
+BUDE  .T FootWears Dashboard
+const ADMIN_PASSWORD = 'izzuDeenRuuNzBude@Admin2026!Secure'

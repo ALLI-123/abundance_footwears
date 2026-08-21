@@ -1,0 +1,22 @@
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe7pM_icf75bNCH_XuciDdQjvZwJ_FsJlXuh6PZnA2N5HYy1Q/viewform?embedded=true" width="640" height="1529" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+
+Email notifications when status changes (via Apps Script)
+SMS alerts (using Twilio or Termii — paid)
+Admin dashboard to update orders from your website (not just Sheets)
+Courier API integration (GIG Logistics, etc.)
+
+
+
+Google App Sheet API DEPLOYMENT ID
+
+--AKfycbzoHVAR-rpLKwIlw-W-Rbxz1ybHGa1HYMMMxX9vAiwX29nSyHp3ji3s_yckOF6oQQ5DaQ--  // the -- on both sides serve as a container. It is not part of the key
+
+Web APP KEY
+
+
+--https://script.google.com/macros/s/AKfycbzoHVAR-rpLKwIlw-W-Rbxz1ybHGa1HYMMMxX9vAiwX29nSyHp3ji3s_yckOF6oQQ5DaQ/exec--
+
+
+
+
+

@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Abundance FootWears — Premium quality shoes and accessories for men, women, and kids. Step into quality, walk with confidence." />
+  <meta name="keywords" content="shoes, footwear, men shoes, women shoes, kids shoes, boots, sandals, accessories, Nigeria" />
+  <meta name="author" content="Abundance FootWears" />
+  <title>Abundance FootWears — Step Into Quality. Walk With Confidence.</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header" id="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="#" class="logo">  <span>Abundance</span> FootWears</a>
+
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#categories">Shop</a></li>
+          <li><a href="#men">Men</a></li>
+          <li><a href="#women">Women</a></li>
+          <li><a href="#kids">Kids</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="pre-order.html" style="color:var(--gold);font-weight:600;">
+          <i class="fas fa-fire"></i> New Drop </a></li>
+          <li><a href="#" onclick="openTrackingModal(); return false;">Track Order</a></li>
+        </ul>
+
+        <div class="nav-icons">
+          <div class="search-bar" onclick="openSearchModal()">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search footwear..." readonly />
+          </div>
+          <button aria-label="Wishlist"><i class="far fa-heart"></i></button>
+          <button aria-label="Cart" onclick="openCartModal()" style="position:relative;">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="cart-count">0</span>
+          </button>
+          <button class="menu-toggle" id="menuToggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-tag" id="heroTag"></span>
+        <h1>Step Into <em>Quality.</em><br/>Walk With <em>Confidence.</em></h1>
+        <p id="heroDescription"></p>
+        <div class="hero-buttons">
+          <a href="#products" class="btn btn-primary">Shop Now <i class="fas fa-arrow-right"></i></a>
+          <a href="#categories" class="btn btn-outline">View Collection</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CATEGORIES ============ -->
+  <section class="section" id="categories">
+    <div class="container">
+      <h2 class="section-title reveal">Shop By Category</h2>
+      <div class="gold-line reveal"></div>
+      <p class="section-subtitle reveal">Explore our curated collections — something perfect for every step of your journey.</p>
+      <div class="categories-grid" id="categoriesGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ MEN'S COLLECTION ============ -->
+  <section class="section collection" id="men">
+    <div class="container">
+      <h2 class="section-title reveal" id="menTitle"></h2>
+      <div class="gold-line reveal"></div>
+      <p class="section-subtitle reveal" id="menSubtitle"></p>
+      <div class="collection-grid" id="menGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ WOMEN'S COLLECTION ============ -->
+  <section class="section collection" id="women">
+    <div class="container">
+      <h2 class="section-title reveal" id="womenTitle"></h2>
+      <div class="gold-line reveal"></div>
+      <p class="section-subtitle reveal" id="womenSubtitle"></p>
+      <div class="collection-grid" id="womenGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ KIDS' COLLECTION ============ -->
+  <section class="section collection" id="kids">
+    <div class="container">
+      <h2 class="section-title reveal" id="kidsTitle"></h2>
+      <div class="gold-line reveal"></div>
+      <p class="section-subtitle reveal" id="kidsSubtitle"></p>
+      <div class="collection-grid" id="kidsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ ACCESSORIES ============ -->
+  <section class="section collection" id="accessories">
+    <div class="container">
+      <h2 class="section-title reveal" id="accessoriesTitle"></h2>
+      <div class="gold-line reveal"></div>
+      <p class="section-subtitle reveal" id="accessoriesSubtitle"></p>
+      <div class="collection-grid" id="accessoriesGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURED PRODUCTS ============ -->
+  <section class="section" id="products">
+    <div class="container">
+      <h2 class="section-title reveal">Featured Products</h2>
+      <div class="gold-line reveal"></div>
+      <p class="section-subtitle reveal">Our bestsellers — loved by customers, trusted for quality.</p>
+      <div class="products-grid" id="productsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ WHY CHOOSE US ============ -->
+  <section class="section why-us">
+    <div class="container">
+      <h2 class="section-title reveal">Why Choose Abundance FootWears</h2>
+      <div class="gold-line reveal"></div>
+      <p class="section-subtitle reveal">
+        Empowering Local Craftsmanship - every purchase supports Nigerian cobblers and vendors <br> 
+        We don't just sell shoes — we deliver confidence, comfort, and value.</p>
+      <div class="features-grid" id="featuresGrid"></div>
+    </div>
+  </section>
+
+
+    <!-- ============ MEET OUR ARTISANS ============ -->
+  <section class="section collection" id="artisans">
+    <div class="container">
+      <h2 class="section-title reveal">Meet Our Artisans</h2>
+      <div class="gold-line reveal"></div>
+      <p class="section-subtitle reveal">Behind every great pair of shoes is a skilled craftsman. We proudly partner with Nigeria's finest cobblers and suppliers to bring you unmatched quality.</p>
+
+      <div class="categories-grid" id="vendorsGrid">
+        <!-- Vendors will be injected here by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title reveal">What Our Customers Say</h2>
+      <div class="gold-line reveal"></div>
+      <p class="section-subtitle reveal">Real stories from real people who walk with confidence.</p>
+      <div class="testimonials-grid" id="testimonialsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ CTA BANNER ============ -->
+  <section class="cta-banner" id="contact">
+    <div class="container">
+      <h2 class="reveal">Ready to Step Into Quality?</h2>
+      <p class="reveal">Shop our collection today or reach out directly — we're here to help you find the perfect pair.</p>
+      <div class="cta-buttons reveal">
+        <a href="#products" class="btn btn-primary">Shop Now <i class="fas fa-arrow-right"></i></a>
+        <a href="#" id="contactEmailLink" class="btn btn-outline">Contact Us</a>
+        <a href="#" id="whatsappLink" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp Order</a>
+       <a href="#" onclick="openTrackingModal(); return false;" class="btn btn-outline"><i class="fas fa-truck"></i> Track Order</a>        
+      </div>
+    </div>
+  </section>
+
+
+
+
+<!-- ============ CONTACT FORM SECTION ============ -->
+<section class="section contact-form-section" id="contactForm">
+  <div class="container">
+    <h2 class="section-title reveal">Get In Touch</h2>
+    <div class="gold-line reveal"></div>
+    <p class="section-subtitle reveal">Have questions? Want to place a custom order? Fill out the form below and we'll respond within 24 hours.</p>
+    
+    <div class="form-container reveal">
+      <iframe 
+        src="https://docs.google.com/forms/d/e/1FAIpQLSe7pM_icf75bNCH_XuciDdQjvZwJ_FsJlXuh6PZnA2N5HYy1Q/viewform?embedded=true" 
+        width="100%" 
+        height="600" 
+        frameborder="0" 
+        marginheight="0" 
+        marginwidth="0"
+        title="Contact Form"
+        style="border-radius: 14px; box-shadow: var(--shadow-lg); background: var(--white);">
+        Loading…
+      </iframe>
+    </div>
+    
+    <div class="form-alternatives reveal">
+      <p>Prefer to reach out directly?</p>
+      <div class="contact-options">
+        <a href="https://wa.me/2348163035778" target="_blank" class="contact-option">
+          <i class="fab fa-whatsapp"></i>
+          <span>WhatsApp</span>
+        </a>
+        <a href="mailto:alli.abdulazeez92@gmail.com" class="contact-option">
+          <i class="fas fa-envelope"></i>
+          <span>Email</span>
+        </a>
+        <a href="tel:+2348163035778" class="contact-option">
+          <i class="fas fa-phone"></i>
+          <span>Call Us</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo"> <span style="color:var(--gold)">Abundance</span> FootWears</div>
+          <p>Your trusted footwear brand for quality shoes and accessories for men, women, and kids. Step into quality, walk with confidence.</p>
+          <div class="social-icons" id="socialIcons"></div>
+        </div>
+
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#men">Men</a></li>
+            <li><a href="#women">Women</a></li>
+            <li><a href="#kids">Kids</a></li>
+            <li><a href="#accessories">Accessories</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Customer Care</h4>
+          <ul>
+            <li><a href="#" onclick="openInfoModal('shippingModal'); return false;">Shipping Info</a></li>
+          <li><a href="#" onclick="openInfoModal('returnsModal'); return false;">Returns & Exchanges</a></li>
+          <li><a href="#" onclick="openInfoModal('sizeGuideModal'); return false;">Size Guide</a></li>
+          <li><a href="#" onclick="openInfoModal('faqModal'); return false;">FAQs</a></li>
+          <li><a href="#" onclick="openInfoModal('privacyModal'); return false;">Privacy Policy</a></li>
+         <li><a href="#" onclick="openTrackingModal(); return false;">Track Your Order</a></li>   
+        </ul>
+        </div>
+
+        <div>
+          <h4>Contact Us</h4>
+          <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span id="contactAddress"></span></div>
+          <div class="contact-item"><i class="fas fa-phone"></i><span id="contactPhone"></span></div>
+          <div class="contact-item"><i class="fas fa-envelope"></i><span id="contactEmail"></span></div>
+          <div class="contact-item"><i class="fas fa-clock"></i><span id="contactHours"></span></div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 <span>Abundance FootWears</span>. All Rights Reserved. Crafted with care.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ CART MODAL ============ -->
+  <div class="modal" id="cartModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Shopping Cart</h3>
+        <span class="modal-close" onclick="closeCartModal()">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div id="cartItems"></div>
+        <div style="border-top:2px solid var(--light-gray);padding-top:20px;margin-top:20px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+            <span style="font-size:1.1rem;font-weight:600;">Total:</span>
+            <span id="cartTotal" style="font-size:1.3rem;font-weight:700;color:var(--brown);">₦0</span>
+          </div>
+          <button onclick="cart.checkout()" class="btn btn-primary" style="width:100%;">Checkout via WhatsApp</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SEARCH MODAL ============ -->
+  <div class="modal" id="searchModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Search Products</h3>
+        <span class="modal-close" onclick="closeSearchModal()">&times;</span>
+      </div>
+      <div class="modal-body">
+        <input type="text" id="searchInput" placeholder="Search by name or description..." 
+               style="width:100%;padding:14px;border:2px solid var(--light-gray);border-radius:8px;font-size:1rem;margin-bottom:20px;"
+               oninput="searchProducts(this.value)" />
+        <div id="searchResults"></div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- ============ PRODUCT DETAIL MODAL ============ -->
+<div class="modal product-modal" id="productModal">
+  <div class="modal-content product-modal-content">
+    <span class="modal-close product-modal-close" onclick="closeProductModal()">&times;</span>
+    <div class="product-modal-body">
+      <div class="product-modal-gallery">
+        <img id="productModalImage" src="" alt="" />
+        <span class="product-badge" id="productModalBadge" style="display:none;"></span>
+      </div>
+      <div class="product-modal-info">
+        <span class="product-modal-category" id="productModalCategory"></span>
+        <h2 id="productModalName"></h2>
+        <div class="product-modal-rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+          <span>(4.5 · 128 reviews)</span>
+        </div>
+        <div class="product-modal-price">
+          <span class="price-current" id="productModalPrice"></span>
+          <span class="price-old" id="productModalOldPrice"></span>
+        </div>
+        <p class="product-modal-desc" id="productModalDesc"></p>
+
+        <div class="product-modal-options">
+          <div class="option-group">
+            <label>Size:</label>
+            <div class="size-options" id="sizeOptions">
+              <button class="size-btn" data-size="38">38</button>
+              <button class="size-btn" data-size="39">39</button>
+              <button class="size-btn active" data-size="40">40</button>
+              <button class="size-btn" data-size="41">41</button>
+              <button class="size-btn" data-size="42">42</button>
+              <button class="size-btn" data-size="43">43</button>
+              <button class="size-btn" data-size="44">44</button>
+            </div>
+          </div>
+
+          <div class="option-group">
+            <label>Quantity:</label>
+            <div class="quantity-selector">
+              <button onclick="updateModalQty(-1)">−</button>
+              <span id="modalQty">1</span>
+              <button onclick="updateModalQty(1)">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-modal-actions">
+          <button class="btn btn-dark" id="modalAddToCart">
+            <i class="fas fa-shopping-bag"></i> Add to Cart
+          </button>
+          <button class="btn btn-primary" id="modalBuyNow">
+            <i class="fab fa-whatsapp"></i> Buy Now
+          </button>
+        </div>
+
+        <div class="product-modal-meta">
+          <div><i class="fas fa-truck"></i> Fast delivery across Nigeria</div>
+          <div><i class="fas fa-undo"></i> 7-day easy returns</div>
+          <div><i class="fas fa-shield-alt"></i> Quality guaranteed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- ============ INFO MODALS ============ -->
+<div class="modal" id="shippingModal">
+  <div class="modal-content info-modal">
+    <div class="modal-header">
+      <h3>Shipping Information</h3>
+      <span class="modal-close" onclick="closeInfoModal('shippingModal')">&times;</span>
+    </div>
+    <div class="modal-body">
+      <div class="info-content">
+        <h4>Delivery Areas</h4>
+        <p>We deliver across all 36 states in Nigeria and Abuja FCT.</p>
+        
+        <h4>Delivery Time</h4>
+        <ul>
+          <li><strong>Lagos:</strong> 1-2 business days</li>
+          <li><strong>Other States:</strong> 3-5 business days</li>
+          <li><strong>Rural Areas:</strong> 5-7 business days</li>
+        </ul>
+        
+        <h4>Shipping Fees</h4>
+        <ul>
+          <li><strong>Lagos:</strong> ₦1,500 - ₦2,500</li>
+          <li><strong>Other States:</strong> ₦2,500 - ₦4,000</li>
+          <li><strong>Free Shipping:</strong> On orders above ₦50,000</li>
+        </ul>
+        
+        <h4>Order Tracking</h4>
+        <p>Once your order is shipped, you'll receive a tracking number via WhatsApp or email.</p>
+        
+        <div class="info-cta">
+          <p>Have questions about delivery?</p>
+          <a href="https://wa.me/2348163035778" target="_blank" class="btn btn-primary">
+            <i class="fab fa-whatsapp"></i> Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </div> 
+</div>
+
+<div class="modal" id="returnsModal">
+  <div class="modal-content info-modal">
+    <div class="modal-header">
+      <h3>Returns & Exchanges</h3>
+      <span class="modal-close" onclick="closeInfoModal('returnsModal')">&times;</span>
+    </div>
+    <div class="modal-body">
+      <div class="info-content">
+        <h4>7-Day Return Policy</h4>
+        <p>We want you to love your purchase. If you're not satisfied, you can return or exchange within 7 days of delivery.</p>
+        
+        <h4>Eligibility</h4>
+        <ul>
+          <li>Items must be unused and in original packaging</li>
+          <li>Tags and labels must be intact</li>
+          <li>Proof of purchase required</li>
+          <li>Sale items are final sale (non-returnable)</li>
+        </ul>
+        
+        <h4>How to Return</h4>
+        <ol>
+          <li>Contact us via WhatsApp or email within 7 days</li>
+          <li>Provide your order number and reason for return</li>
+          <li>We'll provide return shipping instructions</li>
+          <li>Once received and inspected, we'll process your refund or exchange</li>
+        </ol>
+        
+        <h4>Refunds</h4>
+        <p>Refunds are processed within 5-7 business days after we receive the returned item. Refunds go back to the original payment method.</p>
+        
+        <h4>Exchanges</h4>
+        <p>Want a different size or color? We'll happily exchange it subject to availability.</p>
+        
+        <div class="info-cta">
+          <p>Need to return or exchange?</p>
+          <a href="https://wa.me/2348163035778" target="_blank" class="btn btn-primary">
+            <i class="fab fa-whatsapp"></i> Start Return
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="sizeGuideModal">
+  <div class="modal-content info-modal">
+    <div class="modal-header">
+      <h3>Size Guide</h3>
+      <span class="modal-close" onclick="closeInfoModal('sizeGuideModal')">&times;</span>
+    </div>
+    <div class="modal-body">
+      <div class="info-content">
+        <h4>How to Measure Your Foot</h4>
+        <ol>
+          <li>Place a piece of paper on the floor against a wall</li>
+          <li>Stand on the paper with your heel against the wall</li>
+          <li>Mark the longest point of your foot</li>
+          <li>Measure the distance from the wall to the mark in centimeters</li>
+          <li>Use the chart below to find your size</li>
+        </ol>
+        
+        <h4>Men's Size Chart</h4>
+        <table class="size-table">
+          <thead>
+            <tr>
+              <th>EU Size</th>
+              <th>UK Size</th>
+              <th>US Size</th>
+              <th>Foot Length (cm)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>39</td><td>6</td><td>7</td><td>24.5</td></tr>
+            <tr><td>40</td><td>7</td><td>8</td><td>25.0</td></tr>
+            <tr><td>41</td><td>8</td><td>9</td><td>26.0</td></tr>
+            <tr><td>42</td><td>9</td><td>10</td><td>26.5</td></tr>
+            <tr><td>43</td><td>10</td><td>11</td><td>27.5</td></tr>
+            <tr><td>44</td><td>11</td><td>12</td><td>28.0</td></tr>
+          </tbody>
+        </table>
+        
+        <h4>Women's Size Chart</h4>
+        <table class="size-table">
+          <thead>
+            <tr>
+              <th>EU Size</th>
+              <th>UK Size</th>
+              <th>US Size</th>
+              <th>Foot Length (cm)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>36</td><td>3</td><td>5</td><td>22.5</td></tr>
+            <tr><td>37</td><td>4</td><td>6</td><td>23.0</td></tr>
+            <tr><td>38</td><td>5</td><td>7</td><td>24.0</td></tr>
+            <tr><td>39</td><td>6</td><td>8</td><td>24.5</td></tr>
+            <tr><td>40</td><td>7</td><td>9</td><td>25.0</td></tr>
+            <tr><td>41</td><td>8</td><td>10</td><td>26.0</td></tr>
+          </tbody>
+        </table>
+        
+        <h4>Kids' Size Chart</h4>
+        <table class="size-table">
+          <thead>
+            <tr>
+              <th>EU Size</th>
+              <th>Age Range</th>
+              <th>Foot Length (cm)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>22-24</td><td>1-2 years</td><td>14-15</td></tr>
+            <tr><td>25-27</td><td>3-4 years</td><td>16-17</td></tr>
+            <tr><td>28-30</td><td>5-6 years</td><td>18-19</td></tr>
+            <tr><td>31-33</td><td>7-8 years</td><td>20-21</td></tr>
+            <tr><td>34-36</td><td>9-11 years</td><td>22-23</td></tr>
+          </tbody>
+        </table>
+        
+        <div class="info-cta">
+          <p>Not sure about your size?</p>
+          <a href="https://wa.me/2348163035778" target="_blank" class="btn btn-primary">
+            <i class="fab fa-whatsapp"></i> Get Help
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="faqModal">
+  <div class="modal-content info-modal">
+    <div class="modal-header">
+      <h3>Frequently Asked Questions</h3>
+      <span class="modal-close" onclick="closeInfoModal('faqModal')">&times;</span>
+    </div>
+    <div class="modal-body">
+      <div class="info-content">
+        <div class="faq-item">
+          <h4>How do I place an order?</h4>
+          <p>You can order directly through our website by clicking "Buy Now" (opens WhatsApp), or contact us via WhatsApp/phone to place your order.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h4>What payment methods do you accept?</h4>
+          <p>We accept bank transfers, cash on delivery (Lagos only), and mobile money. Payment details are provided after you place your order.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h4>How long does delivery take?</h4>
+          <p>Lagos: 1-2 days. Other states: 3-5 days. Rural areas: 5-7 days.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h4>Can I track my order?</h4>
+          <p>Yes! Once your order is shipped, we'll send you a tracking number via WhatsApp or email.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h4>What if the shoes don't fit?</h4>
+          <p>No problem! We offer 7-day returns and exchanges. Contact us and we'll guide you through the process.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h4>Are your products original?</h4>
+          <p>Yes, all our products are 100% authentic and come with a quality guarantee.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h4>Do you offer wholesale prices?</h4>
+          <p>Yes! Contact us via WhatsApp for wholesale inquiries and special bulk pricing.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h4>How do I care for my shoes?</h4>
+          <p>Use our shoe care accessories (polish, brushes) to maintain quality. Store in a cool, dry place. Check our accessories section for care products.</p>
+        </div>
+        
+        <div class="info-cta">
+          <p>Still have questions?</p>
+          <a href="https://wa.me/2348163035778" target="_blank" class="btn btn-primary">
+            <i class="fab fa-whatsapp"></i> Ask Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="privacyModal">
+  <div class="modal-content info-modal">
+    <div class="modal-header">
+      <h3>Privacy Policy</h3>
+      <span class="modal-close" onclick="closeInfoModal('privacyModal')">&times;</span>
+    </div>
+    <div class="modal-body">
+      <div class="info-content">
+        <p><em>Last updated: July 2026</em></p>
+        
+        <h4>1. Information We Collect</h4>
+        <p>We collect information you provide directly, including:</p>
+        <ul>
+          <li>Name and contact details (phone, email)</li>
+          <li>Shipping address</li>
+          <li>Order history</li>
+          <li>Communication preferences</li>
+        </ul>
+        
+        <h4>2. How We Use Your Information</h4>
+        <p>We use your information to:</p>
+        <ul>
+          <li>Process and deliver your orders</li>
+          <li>Communicate about your orders</li>
+          <li>Provide customer support</li>
+          <li>Send promotional offers (with your consent)</li>
+          <li>Improve our services</li>
+        </ul>
+        
+        <h4>3. Data Security</h4>
+        <p>We implement appropriate security measures to protect your personal information from unauthorized access, alteration, or disclosure.</p>
+        
+        <h4>4. Third-Party Services</h4>
+        <p>We may share your information with trusted third parties (delivery partners, payment processors) only as necessary to fulfill your orders.</p>
+        
+        <h4>5. Your Rights</h4>
+        <p>You have the right to:</p>
+        <ul>
+          <li>Access your personal data</li>
+          <li>Correct inaccurate data</li>
+          <li>Request deletion of your data</li>
+          <li>Opt-out of marketing communications</li>
+        </ul>
+        
+        <h4>6. Cookies</h4>
+        <p>Our website may use cookies to enhance your browsing experience. You can control cookie settings in your browser.</p>
+        
+        <h4>7. Contact Us</h4>
+        <p>For privacy-related questions or requests, contact us at:</p>
+        <p><strong>Email:</strong> alli.abdulazeez92@gmail.com<br>
+        <strong>Phone:</strong> +234 816 303 5778<br>
+        <strong>Address:</strong> Zanmu Compound, Car Wash Bus Stop, Around
+        Anglican Primary School, Itoga, Badagry, Lagos, Nigeria</p>
+        
+        <div class="info-cta">
+          <p>Privacy concerns?</p>
+          <a href="mailto:alli.abdulazeez92@gmail.com" class="btn btn-primary">
+            <i class="fas fa-envelope"></i> Email Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- ============ ORDER TRACKING MODAL ============ -->
+<div class="modal" id="trackingModal">
+  <div class="modal-content tracking-modal">
+    <div class="modal-header">
+      <h3><i class="fas fa-truck" style="color:var(--gold);margin-right:8px;"></i> Track Your Order</h3>
+      <span class="modal-close" onclick="closeTrackingModal()">&times;</span>
+    </div>
+    <div class="modal-body">
+      <!-- Search Form -->
+      <div id="trackingSearch">
+        <p style="color:var(--gray);margin-bottom:16px;">Enter your Order ID to see real-time status. (e.g., ABUN-1001)</p>
+        <div style="display:flex;gap:8px;">
+          <input 
+            type="text" 
+            id="trackingInput" 
+            placeholder="Enter Order ID" 
+            style="flex:1;padding:14px;border:2px solid var(--light-gray);border-radius:8px;font-size:1rem;text-transform:uppercase;"
+          />
+          <button onclick="trackOrder()" class="btn btn-primary" id="trackBtn">
+            <i class="fas fa-search"></i> Track
+          </button>
+        </div>
+        <p id="trackingError" style="color:#c0392b;margin-top:12px;display:none;font-size:0.9rem;"></p>
+        <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--light-gray);font-size:0.85rem;color:var(--gray);">
+          <p><strong>Don't have an Order ID?</strong></p>
+          <p>Place an order via <a href="https://wa.me/2348012345678" target="_blank" style="color:var(--gold);font-weight:600;">WhatsApp</a> and we'll send you one!</p>
+        </div>
+      </div>
+      
+      <!-- Tracking Result (hidden initially) -->
+      <div id="trackingResult" style="display:none;">
+        <button onclick="resetTracking()" style="background:none;border:none;color:var(--gold);font-weight:600;margin-bottom:16px;cursor:pointer;">
+          <i class="fas fa-arrow-left"></i> Track another order
+        </button>
+        
+        <div class="tracking-header-info">
+          <div>
+            <p style="font-size:0.8rem;color:var(--gray);margin-bottom:4px;">Order ID</p>
+            <h4 id="resultOrderId" style="font-size:1.2rem;margin:0;"></h4>
+          </div>
+          <div style="text-align:right;">
+            <p style="font-size:0.8rem;color:var(--gray);margin-bottom:4px;">Order Date</p>
+            <p id="resultDate" style="font-weight:600;margin:0;"></p>
+           </div>
+        </div>
+        
+        <div class="tracking-product-info">
+          <p style="font-size:0.8rem;color:var(--gray);margin-bottom:4px;">Product</p>
+          <p id="resultProduct" style="font-weight:600;margin:0 0 4px 0;"></p>
+          <p style="font-size:0.8rem;color:var(--gray);margin:0;">Customer: <span id="resultCustomer"></span></p>
+        </div>
+        
+        <!-- Status Timeline -->
+        <div class="tracking-timeline" id="trackingTimeline">
+          <!-- Timeline steps will be injected here -->
+        </div>
+        
+        <!-- Tracking Notes -->
+        <div class="tracking-notes">
+          <h5><i class="fas fa-info-circle"></i> Latest Update</h5>
+          <p id="resultNotes"></p>
+        </div>
+        
+        <!-- Estimated Delivery -->
+        <div class="tracking-eta">
+          <i class="fas fa-calendar-alt"></i>
+          <div>
+            <p style="font-size:0.8rem;color:var(--gray);margin:0;">Estimated Delivery</p>
+            <p id="resultEta" style="font-weight:700;color:var(--brown);margin:0;font-size:1.05rem;"></p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Loading State -->
+      <div id="trackingLoading" style="display:none;text-align:center;padding:40px 20px;">
+        <div class="tracking-spinner"></div>
+        <p style="margin-top:16px;color:var(--gray);">Fetching your order details...</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    // Initialize dynamic content
+    document.addEventListener('DOMContentLoaded', () => {
+      // Set hero content
+      document.getElementById('heroTag').textContent = CONFIG.brand.founded;
+      document.getElementById('heroDescription').textContent = CONFIG.brand.description;
+
+      // Set collection titles and subtitles
+      document.getElementById('menTitle').textContent = CONFIG.collections.men.title;
+      document.getElementById('menSubtitle').textContent = CONFIG.collections.men.subtitle;
+      document.getElementById('womenTitle').textContent = CONFIG.collections.women.title;
+      document.getElementById('womenSubtitle').textContent = CONFIG.collections.women.subtitle;
+      document.getElementById('kidsTitle').textContent = CONFIG.collections.kids.title;
+      document.getElementById('kidsSubtitle').textContent = CONFIG.collections.kids.subtitle;
+      document.getElementById('accessoriesTitle').textContent = CONFIG.collections.accessories.title;
+      document.getElementById('accessoriesSubtitle').textContent = CONFIG.collections.accessories.subtitle;
+
+      // Set contact links
+      document.getElementById('contactEmailLink').href = `mailto:${CONFIG.contact.email}`;
+      document.getElementById('whatsappLink').href = `https://wa.me/${CONFIG.contact.whatsapp.replace(/\+/g, '')}`;
+
+      // Sticky header
+      const header = document.getElementById('header');
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 30);
+      });
+
+      // Mobile menu
+      const menuToggle = document.getElementById('menuToggle');
+      const navLinks = document.getElementById('navLinks');
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+        const icon = menuToggle.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+      });
+
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+          menuToggle.querySelector('i').classList.add('fa-bars');
+          menuToggle.querySelector('i').classList.remove('fa-times');
+        });
+      });
+
+      // Close modals on outside click
+      document.querySelectorAll('.modal').forEach(modal => {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            modal.classList.remove('active');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
