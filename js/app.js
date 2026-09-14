@@ -1,4 +1,11 @@
 // js/app.js
+
+// ========== HELPER FUNCTIONS ==========
+function getVendorById(vendorId) {
+  if (!vendorId || !CONFIG.vendors) return null;
+  return CONFIG.vendors.find(v => v.id === vendorId);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   // ========== RENDER FUNCTIONS ==========
   
@@ -24,18 +31,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const collection = CONFIG.collections[collectionId];
     if (!collection) return;
 
-    container.innerHTML = collection.items.map(item => `
-      <div class="collection-card reveal" onclick="openProductModal(${item.id}, '${collectionId}')">
-        <div class="collection-card-img">
-          <img src="${item.image}" alt="${item.name}" loading="lazy" />
+    container.innerHTML = collection.items.map(item => {
+      const vendor = getVendorById(item.vendorId);
+      const vendorHTML = vendor ? `
+        <div class="vendor-hover-badge">
+          <img src="${vendor.image}" alt="${vendor.name}" />
+          <span>by ${vendor.name}</span>
         </div>
-        <div class="collection-card-body">
-          <h4>${item.name}</h4>
-          <p>${item.description.substring(0, 40)}...</p>
-          <p style="margin-top:8px;font-weight:700;color:var(--brown);font-size:0.95rem;">₦${item.price.toLocaleString()}</p>
+      ` : '';
+
+      return `
+        <div class="collection-card reveal" onclick="openProductModal(${item.id}, '${collectionId}')">
+          <div class="collection-card-img">
+            <img src="${item.image}" alt="${item.name}" loading="lazy" />
+            ${vendorHTML}
+          </div>
+          <div class="collection-card-body">
+            <h4>${item.name}</h4>
+            <p>${item.description.substring(0, 40)}...</p>
+            <p style="margin-top:8px;font-weight:700;color:var(--brown);font-size:0.95rem;">₦${item.price.toLocaleString()}</p>
+          </div>
         </div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
   }
 
   function renderProducts() {
@@ -49,11 +67,20 @@ document.addEventListener('DOMContentLoaded', () => {
       const oldPriceHTML = product.oldPrice ? 
         `<span class="price-old">₦${product.oldPrice.toLocaleString()}</span>` : '';
 
+      const vendor = getVendorById(product.vendorId);
+      const vendorHTML = vendor ? `
+        <div class="vendor-hover-badge">
+          <img src="${vendor.image}" alt="${vendor.name}" />
+          <span>by ${vendor.name}</span>
+        </div>
+      ` : '';
+
       return `
         <div class="product-card reveal" data-category="${product.category}">
           ${badgeHTML}
           <div class="product-img">
             <img src="${product.image}" alt="${product.name}" loading="lazy" />
+            ${vendorHTML}
           </div>
           <div class="product-body">
             <h4>${product.name}</h4>
@@ -106,13 +133,12 @@ document.addEventListener('DOMContentLoaded', () => {
     `).join('');
   }
 
-  // ========== NEW: RENDER VENDORS ==========
   function renderVendors() {
     const container = document.getElementById('vendorsGrid');
     if (!container || !CONFIG.vendors) return;
 
     container.innerHTML = CONFIG.vendors.map(vendor => `
-      <div class="category-card reveal" style="aspect-ratio: auto; padding-bottom: 0;">
+      <a href="supplier.html?id=${vendor.id}" class="category-card reveal" style="aspect-ratio: auto; padding-bottom: 0; text-decoration: none; color: inherit;">
         <img src="${vendor.image}" alt="${vendor.name}" loading="lazy" style="aspect-ratio: 4/3;" />
         <div class="category-card-content" style="position: relative; background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.4) 100%); padding: 20px;">
           <span style="font-size: 0.75rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px;">${vendor.role} • ${vendor.location}</span>
@@ -120,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <p style="font-size: 0.85rem; color: rgba(255,255,255,0.8); margin-bottom: 12px; line-height: 1.5;">${vendor.description}</p>
           <span style="font-size: 0.8rem; color: var(--gold); font-weight: 600;">Specialty: ${vendor.specialty}</span>
         </div>
-      </div>
+      </a>
     `).join('');
   }
 
@@ -153,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderCollection('women', 'women');
   renderCollection('kids', 'kids');
   renderCollection('accessories', 'accessories');
-  renderVendors(); // <-- ADDED HERE
+  renderVendors(); 
   renderProducts();
   renderFeatures();
   renderTestimonials();
@@ -175,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ========== GLOBAL FUNCTIONS ==========
 
 function buyNow(productId) {
-  const product = CONFIG.products.find(p => p.id === productId);
+  const product = CONFIG.products.find(p => p.id === productId) || findProductById(productId);
   if (!product) return;
 
   const message = `Hello Abundance Footwears! I'd like to buy:\n\n• ${product.name}\n• Price: ₦${product.price.toLocaleString()}\n\nPlease confirm availability and delivery details.`;
@@ -245,10 +271,10 @@ function searchProducts(query) {
 }
 
 function viewProduct(productId) {
-  const product = CONFIG.products.find(p => p.id === productId);
+  const product = CONFIG.products.find(p => p.id === productId) || findProductById(productId);
   if (!product) return;
 
-  alert(`Product: ${product.name}\nPrice: ₦${product.price.toLocaleString()}\n\nFeature coming soon: Product detail page`);
+  openProductModal(productId, product.category);
 }
 
 // Filter products by category
@@ -297,6 +323,24 @@ function openProductModal(productId, collectionKey) {
   document.getElementById('productModalDesc').textContent = product.description;
   document.getElementById('productModalPrice').textContent = `₦${product.price.toLocaleString()}`;
   document.getElementById('modalQty').textContent = modalQty;
+
+  // --- VENDOR INFO IN MODAL ---
+  const vendor = getVendorById(product.vendorId);
+  const modalVendorEl = document.getElementById('modalVendorInfo');
+  if (vendor && modalVendorEl) {
+    modalVendorEl.innerHTML = `
+      <div class="modal-vendor-badge" style="display: flex;">
+        <img src="${vendor.image}" alt="${vendor.name}" />
+        <div>
+          <span>Crafted by</span>
+          <strong>${vendor.name}</strong>
+        </div>
+      </div>
+    `;
+    modalVendorEl.style.display = 'block';
+  } else if (modalVendorEl) {
+    modalVendorEl.style.display = 'none';
+  }
 
   // Category label
   const categoryLabel = collectionKey ? collectionKey.charAt(0).toUpperCase() + collectionKey.slice(1) : (product.category || '');
@@ -361,18 +405,20 @@ document.addEventListener('click', (e) => {
 document.addEventListener('DOMContentLoaded', () => {
   const addToCartBtn = document.getElementById('modalAddToCart');
   if (addToCartBtn) {
+
+
     addToCartBtn.addEventListener('click', () => {
       if (!currentModalProduct) return;
-      const productWithQty = {
-        ...currentModalProduct,
-        quantity: modalQty,
-        selectedSize: selectedSize
-      };
-      for (let i = 0; i < modalQty; i++) {
-        cart.addItem(currentModalProduct);
-      }
-      cart.showNotification(`Added ${modalQty} × ${currentModalProduct.name} (Size ${selectedSize}) to cart!`);
+      
+      // Add item once with the correct quantity
+      cart.addItem(currentModalProduct, modalQty);
+      
+      // Close modal after adding
+      closeProductModal();
     });
+
+
+
   }
 
   const buyNowBtn = document.getElementById('modalBuyNow');
