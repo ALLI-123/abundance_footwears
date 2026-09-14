@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Be the first to own The Royal Oxford — limited edition handcrafted footwear from Abundance FootWears." />
+  <title>Coming Soon — The Royal Oxford | Abundance FootWears</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/pre-order.css" />
+</head>
+<body>
+
+  <!-- Minimal Header -->
+  <header class="po-header">
+    <div class="container">
+      <a href="index.html" class="logo"> <span>ABUNDANCE</span> FootWears</a>
+      <a href="index.html" class="po-back"><i class="fas fa-arrow-left"></i> Back to Store</a>
+    </div>
+  </header>
+
+  <!-- Pre-Order Page -->
+  <main class="po-page" id="preOrderPage">
+    <div class="container">
+      
+      <!-- Tagline -->
+      <div class="po-tagline" id="poTagline"></div>
+      
+      <!-- Hero Section -->
+      <div class="po-hero">
+        <div class="po-hero-image">
+          <img id="poHeroImage" src="" alt="" />
+        </div>
+        
+        <div class="po-hero-content">
+          <h1 class="po-name" id="poName"></h1>
+          <p class="po-subtitle" id="poSubtitle"></p>
+          <p class="po-description" id="poDescription"></p>
+          
+          <!-- Countdown -->
+          <div class="po-countdown" id="poCountdown"></div>
+          
+          <!-- Pricing -->
+          <div class="po-pricing">
+            <div class="po-price-current">
+              <span class="po-price-label">Early-bird price</span>
+              <span id="poEarlyPrice"></span>
+            </div>
+            <div class="po-price-regular">
+              <span class="po-price-label">Regular price</span>
+              <span id="poRegularPrice"></span>
+            </div>
+          </div>
+          
+          <!-- Waitlist Form -->
+          <form id="waitlistForm" class="po-form">
+            <input type="text" id="wlName" placeholder="Your Name" required />
+            <input type="tel" id="wlWhatsapp" placeholder="WhatsApp Number (e.g., +234...)" required />
+            <button type="submit" id="wlSubmitBtn" class="po-submit">Join Waitlist →</button>
+            <p id="wlError" class="po-error"></p>
+          </form>
+          
+          <div id="wlSuccess" class="po-success" style="display:none;">
+            <i class="fas fa-check-circle"></i>
+            <h3>You're on the list!</h3>
+            <p>We'll notify you the moment it launches. Check your WhatsApp.</p>
+          </div>
+          
+          <!-- Social Proof -->
+          <div class="po-social-proof">
+            <div id="poStock" class="po-stock"></div>
+            <div id="poWaitlistCount" class="po-waitlist-count"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Benefits -->
+      <div class="po-benefits-section">
+        <h2 class="po-section-title">Why You'll Love It</h2>
+        <div class="po-benefits" id="poBenefits"></div>
+      </div>
+      
+    </div>
+  </main>
+
+  <!-- Footer (minimal) -->
+  <footer class="po-footer">
+    <div class="container">
+      <p>&copy; 2026 Abundance FootWears. All rights reserved.</p>
+      <p>Questions? <a href="https://wa.me/2348012345678" target="_blank">WhatsApp us</a></p>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/pre-order.js"></script>
+</body>
+</html>
