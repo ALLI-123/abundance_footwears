@@ -21,11 +21,21 @@
 </head>
 <body>
 
+    <!-- ============ PRELOADER ============ -->
+  <div id="preloader" class="preloader">
+    <div class="preloader-content">
+      <!-- Using your local logo for maximum sharpness and brand consistency -->
+      <img src="images/Abundance_footwears_logo_2.png" alt="Abundance Footwears" class="preloader-logo" />
+      <div class="preloader-spinner"></div>
+    </div>
+  </div>
+  <!-- ================================== -->
+
   <!-- ============ HEADER ============ -->
-  <header class="header" id="header">
+ <header class="header" id="header">
     <div class="container">
       <nav class="nav">
-        <a href="#" class="logo">  <span>Abundance</span> FootWears</a>
+        <a href="index.html" class="logo"> <img src="images/Abundance_footwears_whiteBT.jpg" alt=""> </a>
 
         <ul class="nav-links" id="navLinks">
           <li><a href="#home">Home</a></li>
@@ -54,6 +64,7 @@
       </nav>
     </div>
   </header>
+
 
   <!-- ============ HERO ============ -->
   <section class="hero" id="home">
@@ -231,7 +242,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div class="logo"> <span style="color:var(--gold)">Abundance</span> FootWears</div>
+          <div class="logo"> <span style="color:var(--gold); font-style: oblique;">Abundance FootWears </div>
           <p>Your trusted footwear brand for quality shoes and accessories for men, women, and kids. Step into quality, walk with confidence.</p>
           <div class="social-icons" id="socialIcons"></div>
         </div>
@@ -326,6 +337,10 @@
       <div class="product-modal-info">
         <span class="product-modal-category" id="productModalCategory"></span>
         <h2 id="productModalName"></h2>
+        
+        <!-- NEW: Vendor Info Container for the supplier logo/name -->
+        <div id="modalVendorInfo" style="display: none;"></div>
+        
         <div class="product-modal-rating">
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
@@ -406,9 +421,9 @@
         
         <h4>Shipping Fees</h4>
         <ul>
-          <li><strong>Lagos:</strong> ₦1,500 - ₦2,500</li>
-          <li><strong>Other States:</strong> ₦2,500 - ₦4,000</li>
-          <li><strong>Free Shipping:</strong> On orders above ₦50,000</li>
+          <li><strong>Lagos:</strong> ₦1,500 - ₦6,000 (subject to prevailing rates) </li>
+          <li><strong>Other States:</strong> ₦2,500 - ₦8,000 (subject to prevailing rates) </li>
+          <li><strong>Free Shipping:</strong> On orders above ₦150,000</li>
         </ul>
         
         <h4>Order Tracking</h4>
@@ -706,7 +721,7 @@
         <p id="trackingError" style="color:#c0392b;margin-top:12px;display:none;font-size:0.9rem;"></p>
         <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--light-gray);font-size:0.85rem;color:var(--gray);">
           <p><strong>Don't have an Order ID?</strong></p>
-          <p>Place an order via <a href="https://wa.me/2348012345678" target="_blank" style="color:var(--gold);font-weight:600;">WhatsApp</a> and we'll send you one!</p>
+          <p>Place an order via <a href="https://wa.me/2348163035778" target="_blank" style="color:var(--gold);font-weight:600;">WhatsApp</a> and we'll send you one!</p>
         </div>
       </div>
       
@@ -823,5 +838,56 @@
       });
     });
   </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- ============ PRELOADER LOGIC ============ -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const preloader = document.getElementById('preloader');
+      if (!preloader) return;
+
+      // Set inactivity timeout to 15 minutes (15 * 60 * 1000 milliseconds)
+      const INACTIVITY_TIMEOUT = 15 * 60 * 1000; 
+      const lastVisit = localStorage.getItem('abundance_last_visit');
+      const now = Date.now();
+
+      // Check if it's the first visit OR if 15 minutes have passed
+      const shouldShow = !lastVisit || (now - parseInt(lastVisit, 10)) > INACTIVITY_TIMEOUT;
+
+      if (shouldShow) {
+        // Keep preloader visible
+        
+        const hidePreloader = () => {
+          setTimeout(() => {
+            preloader.classList.add('hidden');
+            // Update the last visit timestamp
+            localStorage.setItem('abundance_last_visit', Date.now().toString());
+          }, 1500); // Shows for 1.5 seconds for a smooth, premium brand impression
+        };
+
+        // If the page is already fully loaded (e.g., from cache), hide immediately after delay
+        if (document.readyState === 'complete') {
+          hidePreloader();
+        } else {
+          // Otherwise, wait for all images/assets to finish loading
+          window.addEventListener('load', hidePreloader);
+        }
+      } else {
+        // User returned within 15 minutes: hide instantly for seamless browsing
+        preloader.classList.add('hidden');
+      }
+    });
+  </script>
+  <!-- ========================================= -->
 </body>
 </html>
