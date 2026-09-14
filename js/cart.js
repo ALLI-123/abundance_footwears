@@ -5,26 +5,21 @@ class ShoppingCart {
     this.updateCartCount();
   }
 
-  addItem(product) {
+  addItem(product, quantity = 1) {
     const existingItem = this.items.find(item => item.id === product.id);
     
     if (existingItem) {
-      existingItem.quantity += 1;
+      existingItem.quantity += quantity;
     } else {
-      this.items.push({ ...product, quantity: 1 });
+      this.items.push({ ...product, quantity: quantity });
     }
     
     this.saveToLocalStorage();
     this.updateCartCount();
-    this.showNotification(`${product.name} added to cart!`);
+    this.updateCartModal(); // Auto-refresh cart modal
+    this.showNotification(`${quantity} × ${product.name} added to cart!`);
   }
 
-  removeItem(productId) {
-    this.items = this.items.filter(item => item.id !== productId);
-    this.saveToLocalStorage();
-    this.updateCartCount();
-    this.updateCartModal();
-  }
 
   updateQuantity(productId, quantity) {
     const item = this.items.find(item => item.id === productId);
@@ -48,15 +43,21 @@ class ShoppingCart {
     localStorage.setItem('cart', JSON.stringify(this.items));
   }
 
-  updateCartCount() {
+updateCartCount() {
     const cartCount = document.querySelector('.cart-count');
     if (cartCount) {
       const count = this.getItemCount();
       cartCount.textContent = count;
       cartCount.style.display = count > 0 ? 'flex' : 'none';
+      
+      // Add bounce animation
+      cartCount.classList.remove('bounce');
+      setTimeout(() => cartCount.classList.add('bounce'), 10);
     }
   }
 
+
+  
   updateCartModal() {
     const cartItemsContainer = document.getElementById('cartItems');
     const cartTotal = document.getElementById('cartTotal');
